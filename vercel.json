@@ -4,50 +4,11 @@
   "redirects": [
     {
       "source": "/home",
-      "destination": "/index",
-      "permanent": true
-    },
-    {
-      "source": "/about",
-      "destination": "/about",
-      "permanent": true
-    },
-    {
-      "source": "/cv",
-      "destination": "/cv",
-      "permanent": true
-    },
-    {
-      "source": "/photos",
-      "destination": "/photos",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio",
-      "destination": "/portfolio",
-      "permanent": true
-    },
-    {
-      "source": "/testimonials",
-      "destination": "/testimonials",
-      "permanent": true
-    },
-    {
-      "source": "/contact",
-      "destination": "/contact",
-      "permanent": true
-    },
-    {
-      "source": "/thank-you",
-      "destination": "/thank-you",
+      "destination": "/",
       "permanent": true
     }
   ],
   "rewrites": [
-    {
-      "source": "/home",
-      "destination": "/index.html"
-    },
     {
       "source": "/about",
       "destination": "/about.html"
@@ -77,4 +38,4 @@
       "destination": "/thank-you.html"
     }
   ]
-} 
+}
