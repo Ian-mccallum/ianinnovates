@@ -49,6 +49,40 @@ document.addEventListener('DOMContentLoaded', () => {
             themeToggle.setAttribute('aria-label', 'Switch to Dark Mode');
         }
     }
+
+    // Simple Dropdown Menu
+    const dropdown = document.querySelector('.dropdown');
+    if (dropdown) {
+        const dropdownLink = dropdown.querySelector('.nav-link');
+        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+
+        // Toggle dropdown on click
+        dropdownLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdownMenu.classList.toggle('show');
+            dropdownLink.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+                dropdownLink.classList.remove('active');
+            }
+        });
+
+        // Handle desktop hover if not on mobile
+        if (window.innerWidth > 768) {
+            dropdown.addEventListener('mouseenter', () => {
+                dropdownMenu.classList.add('show');
+            });
+
+            dropdown.addEventListener('mouseleave', () => {
+                dropdownMenu.classList.remove('show');
+                dropdownLink.classList.remove('active');
+            });
+        }
+    }
 });
 
 // Initialize Lightbox options
