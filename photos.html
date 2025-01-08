@@ -12,10 +12,105 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Lightbox CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .carousel {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .carousel-item {
+            background-color: var(--bg-color);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .carousel-control-prev {
+            left: -25px;
+        }
+
+        .carousel-control-next {
+            right: -25px;
+        }
+        
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background-color: var(--primary-color);
+            opacity: 1;
+        }
+        
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            width: 20px;
+            height: 20px;
+            background-size: 100%;
+            filter: none;
+        }
+
+        .carousel-control-prev-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23152C40'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+        }
+
+        .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23152C40'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        .carousel-control-prev:hover .carousel-control-prev-icon,
+        .carousel-control-next:hover .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+        }
+
+        .carousel-control-next:hover .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+        
+        .carousel-indicators {
+            bottom: -3rem;
+        }
+        
+        .carousel-indicators button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            opacity: 0.5;
+        }
+        
+        .carousel-indicators button.active {
+            opacity: 1;
+        }
+
+        [data-theme="dark"] .carousel-control-prev-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2304738C'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+        }
+
+        [data-theme="dark"] .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2304738C'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+    </style>
 </head>
 <body>
     <!-- Theme Toggle -->
@@ -27,82 +122,47 @@
 
     <div class="page-content">
         <div class="container py-5">
-            <h1 class="text-center mb-5" data-aos="fade-up">Photo Gallery</h1>
+            <h1 class="text-center mb-5" data-aos="fade-up">Photos</h1>
 
-            <div class="row g-4">
-                <!-- Project Photos -->
-                <div class="col-12 mb-5">
-                    <h2 class="text-center mb-4" data-aos="fade-up">Projects & Ventures</h2>
-                    <div class="row g-4 photo-gallery">
-                        <div class="col-md-4" data-aos="fade-up">
-                            <a href="img/project1.jpg" data-lightbox="projects" data-title="Project 1 Description">
-                                <div class="gallery-item">
-                                    <img src="img/project1.jpg" alt="Project 1" class="img-fluid">
-                                    <div class="gallery-overlay">
-                                        <h3>Project 1</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                            <a href="img/project2.jpg" data-lightbox="projects" data-title="Project 2 Description">
-                                <div class="gallery-item">
-                                    <img src="img/project2.jpg" alt="Project 2" class="img-fluid">
-                                    <div class="gallery-overlay">
-                                        <h3>Project 2</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                            <a href="img/project3.jpg" data-lightbox="projects" data-title="Project 3 Description">
-                                <div class="gallery-item">
-                                    <img src="img/project3.jpg" alt="Project 3" class="img-fluid">
-                                    <div class="gallery-overlay">
-                                        <h3>Project 3</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+            <!-- Photo Carousel -->
+            <div id="photoCarousel" class="carousel slide" data-bs-ride="carousel" data-aos="fade-up">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="3"></button>
+                </div>
+                
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="img/IMG_4666.jpg" alt="Ian McCallum Photo 1" class="d-block">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/IMG_3486.jpg" alt="Ian McCallum Photo 2" class="d-block">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/IMG_3800.jpg" alt="Ian McCallum Photo 3" class="d-block">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/IMG_7830.jpg" alt="Ian McCallum Photo 4" class="d-block">
                     </div>
                 </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
 
-                <!-- Events & Speaking -->
-                <div class="col-12 mb-5">
-                    <h2 class="text-center mb-4" data-aos="fade-up">Events & Speaking</h2>
-                    <div class="row g-4 photo-gallery">
-                        <div class="col-md-4" data-aos="fade-up">
-                            <a href="img/event1.jpg" data-lightbox="events" data-title="Event 1 Description">
-                                <div class="gallery-item">
-                                    <img src="img/event1.jpg" alt="Event 1" class="img-fluid">
-                                    <div class="gallery-overlay">
-                                        <h3>Event 1</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                            <a href="img/event2.jpg" data-lightbox="events" data-title="Event 2 Description">
-                                <div class="gallery-item">
-                                    <img src="img/event2.jpg" alt="Event 2" class="img-fluid">
-                                    <div class="gallery-overlay">
-                                        <h3>Event 2</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                            <a href="img/event3.jpg" data-lightbox="events" data-title="Event 3 Description">
-                                <div class="gallery-item">
-                                    <img src="img/event3.jpg" alt="Event 3" class="img-fluid">
-                                    <div class="gallery-overlay">
-                                        <h3>Event 3</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <!-- Instagram Link -->
+            <div class="text-center mt-5" data-aos="fade-up">
+                <a href="https://www.instagram.com/iandmccallum/" target="_blank" rel="noopener" class="btn btn-outline-primary btn-lg">
+                    <i class="fab fa-instagram me-2"></i>View More Photos
+                </a>
             </div>
         </div>
     </div>
@@ -116,7 +176,6 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
 </body>
