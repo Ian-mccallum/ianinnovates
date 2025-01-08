@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const themeIcon = themeToggle.querySelector('i');
     const html = document.documentElement;
-
+ 
     // Update the icon to match current theme
     updateThemeIcon(savedTheme === 'dark');
 
