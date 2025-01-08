@@ -11,7 +11,7 @@
 
 /* Dark Mode Styles */
 [data-theme="dark"] {
-    --primary-color: #1d3d57;
+    --primary-color: #04738C;
     --secondary-color: #2a2d3e;
     --text-color: #ffffff;
     --text-muted: #a0a0a0;
@@ -26,6 +26,27 @@
     --text-muted: #6c757d;
     --bg-color: #ffffff;
     --card-bg: #ffffff;
+}
+
+/* Override Bootstrap button colors */
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
 }
 
 /* Add text-muted override */
@@ -89,6 +110,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
+    margin-bottom: 1rem;
 }
 
 .profile-img:hover {
@@ -97,7 +119,7 @@ body {
 }
 
 .bio-text {
-    margin: 2rem 0;
+    margin: 1rem 0;
 }
 
 .bio-text p {
@@ -105,9 +127,14 @@ body {
     font-size: 1.2rem;
 }
 
-.bio-text p:first-child {
-    font-size: 1.8rem;
+.bio-text h1 {
+    font-size: 2.1rem;
     font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.bio-text p:first-of-type {
     margin-bottom: 0.5rem;
 }
 
