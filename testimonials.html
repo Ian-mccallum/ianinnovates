@@ -15,117 +15,96 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        :root[data-theme="dark"] {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #ffffff;
-            --text-muted: #a0a0a0;
-        }
-
-        :root[data-theme="light"] {
-            --bg-color: #ffffff;
-            --card-bg: #f8f9fa;
-            --text-color: #152C40;
-            --text-muted: #6c757d;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .construction-animation {
-            position: relative;
-            display: inline-block;
-            margin: 2rem 0;
-            width: 200px;
-            height: 200px;
-        }
-
-        .worker {
-            position: absolute;
-            left: 35%;
-            bottom: 30%;
-            font-size: 5rem;
-            display: inline-block;
-            color: var(--text-color);
-            transition: color 0.3s ease;
-            z-index: 2;
-        }
-
-        .hammer {
-            position: absolute;
-            right: 20%;
-            top: 55%;
-            font-size: 4rem;
-            color: var(--text-color);
-            transform-origin: 50% 100%;
-            animation: hammerHit 0.6s infinite ease-in-out;
-            transition: color 0.3s ease;
-            z-index: 1;
-        }
-
-        @keyframes hammerHit {
-            0%, 100% { transform: rotate(-45deg); }
-            50% { transform: rotate(0deg); }
-        }
-
-        .under-construction {
-            padding: 3rem;
+        .testimonial-card {
+            background: var(--bs-light);
             border-radius: 15px;
-            margin: 2rem auto;
-            max-width: 600px;
-            background-color: var(--card-bg);
-            transition: var(--transition);
+            padding: 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
         }
 
-        .under-construction h1 {
-            color: var(--text-color);
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-        }
-
-        .under-construction .lead {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-        }
-
-        :root[data-theme="dark"] .under-construction {
+        [data-theme="dark"] .testimonial-card {
+            background: var(--bs-dark);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .footer {
-            color: var(--text-muted);
-            transition: color 0.3s ease;
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #333;
         }
 
-        .back-link {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border-color: var(--text-muted);
-            transition: all 0.3s ease;
+        [data-theme="dark"] .testimonial-text {
+            color: #e0e0e0;
         }
 
-        .back-link:hover {
-            border-color: var(--text-color);
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .theme-toggle {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border-color: var(--text-muted);
-            transition: all 0.3s ease;
+        .author-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--bs-primary);
         }
 
-        .theme-toggle:hover {
-            border-color: var(--text-color);
+        .author-info h5 {
+            margin: 0;
+            color: var(--bs-primary);
+            font-weight: 600;
         }
 
-        .theme-toggle i {
-            color: var(--text-color);
-            transition: color 0.3s ease;
+        .author-info p {
+            margin: 0;
+            color: var(--bs-secondary);
+            font-size: 0.9rem;
+        }
+
+        .author-info a {
+            color: var(--bs-primary);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .author-info a:hover {
+            opacity: 0.8;
+        }
+
+        @media (min-width: 769px) {
+            .author-info h5 {
+                font-size: 1.4rem;
+            }
+            
+            .author-info p {
+                font-size: 1.1rem;
+            }
+            
+            .author-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+            
+            .testimonial-text {
+                font-size: 1rem;
+            }
+            
+            .author-image {
+                width: 60px;
+                height: 60px;
+            }
         }
     </style>
 </head>
@@ -137,14 +116,28 @@
 
     <a href="index.html" class="back-link">← Back to Home</a>
 
-    <div class="container py-5">
-        <div class="under-construction text-center" data-aos="fade-up">
-            <div class="construction-animation">
-                <span class="worker"><i class="fas fa-hard-hat"></i></span>
-                <span class="hammer"><i class="fas fa-hammer"></i></span>
+    <div class="page-content">
+        <div class="container py-5">
+            <h1 class="text-center mb-5" data-aos="fade-up">Select Testimonials & Praise</h1>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card" data-aos="fade-up">
+                        <div class="testimonial-text">
+                            "Working with Ian to build my photography website was a great experience. He took the time to understand my vision and translated it into a website that looks great and is easy to navigate. The layout and attention to detail makes my brand look very professional. I highly recommend Ian to anyone looking for a high quality and custom website."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h5>Timmy Miller</h5>
+                                <p>Photographer</p>
+                                <p><a href="https://tmmphotos.com" target="_blank">TMM Photography</a></p>
+                            </div>
+                            <img src="img/other/IMG_7878.JPG" alt="Timmy Miller" class="author-image">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h1>Under Construction</h1>
-            <p class="lead">This section is currently being built. Check back soon!</p>
         </div>
     </div>
 
