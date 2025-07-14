@@ -380,6 +380,13 @@ body {
         width: 250px;
         height: 250px;
     }
+
+    .tech-stack .badge {
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        padding: 0.7rem 1.4rem;
+        font-size: 0.85rem;
+    }
 }
 
 /* Portfolio Styles */
@@ -425,8 +432,10 @@ body {
 
 .tech-stack .badge {
     margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
     padding: 0.5rem 1rem;
     font-weight: 500;
+    display: inline-block;
 }
 
 /* Testimonial Styles */
@@ -510,6 +519,13 @@ body {
     .author-img {
         width: 50px;
         height: 50px;
+    }
+
+    .tech-stack .badge {
+        margin-right: 0.75rem;
+        margin-bottom: 0.75rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
     }
 } 
 
