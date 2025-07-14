@@ -883,4 +883,14 @@ body {
     .cv-item h3 {
         font-size: 1.1rem;
     }
+
+    /* Fix GPA display on mobile */
+    .cv-item .d-flex.justify-content-between {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .cv-item .d-flex.justify-content-between span {
+        text-align: left;
+    }
 } 
